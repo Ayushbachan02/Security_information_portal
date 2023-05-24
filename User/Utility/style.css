@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+body{
+    font-family: 'poppins','sans-serif';
+    background: #ececec;
+}
+
+
+/* --------------------Login container----------------- */
+.box-area{
+    width: 930px;
+}
+
+
+/*---------------------right box-----------------------*/
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+::placeholder{
+    font-size: 16px ;
+}
+
+/*--------------------Small devices----------------------*/
+
+@media only screen and (max-width: 768px) {
+    .box-area{
+        margin: 0 10px;
+    }
+
+    .left-box{
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .right-box{
+        padding: 20px;
+    }
+}
