@@ -36,23 +36,28 @@
                         <h2>Welcome, Back!</h2>
                         <p>Login to your account</p>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg gb-light fs-6" placeholder="Email Address">
+                    <form action="User/Actions/login.php" method="post">
+                    <div class="form-group mb-3">
+                        <input type="text" name="email" class="form-control form-control-lg gb-light fs-6" placeholder="Email Address">
                     </div>
-                    <div class="input-group mb-1">
-                        <input type="password" class="form-control form-control-lg gb-light fs-6" placeholder="Password">
+                    <div class="form-group mb-1">
+                        <input type="password" name="password" class="form-control form-control-lg gb-light fs-6" placeholder="Password">
                     </div>
-                    <div class="input-group mb-5 d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="formCheck">
-                            <label for="formCheck" class="form-check-label"><small> Remember Me</small></label>
+                    <div class="form-group mb-5 d-flex justify-content-between">
+                        <div class="form-group">
+                            <input type="checkbox" class="form-group-input" id="formCheck">
+                            <label for="formCheck" class="form-group-label"><small> Remember Me</small></label>
                         </div>
                         <div class="forgot">
                             <small><a href="#">Forgot password?</a></small>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="form-group mb-3">
                         <button class="btn brn-lg btn-primary w-100 fs-6">Login</button>
+                    </div>
+                    </form>
+                    <div class="row">
+                        <small>Don't have a account <a href="#">Signup</a></small>
                     </div>
                 </div>
             </div>
