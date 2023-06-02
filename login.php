@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
             $error[] = 'Incorrect email or password';
         }
     }
-}
+};
 ?>
 
 
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
                             foreach ($error as $error) {
                                 echo "<p>$error</p>";
                             }
-                        }
+                        };
                         ?>
                     </div>
 

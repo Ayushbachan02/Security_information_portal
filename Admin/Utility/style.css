@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+body{
+    font-family: 'poppins','sans-serif';
+    background: #ececec;
+}
+
+
+:root{
+    --offcanvas-width: 270px !important;
+    --topNavbarHeight: 56px !important;
+}
+
+.sidebar-nav{
+    width: var(--offcanvas-width) !important;
+}
+
+@media (min-width:992px){
+    .sidebar-nav{
+        transform: none !important;
+        visibility: visible !important;
+        top: var(--topNavbarHeight);
+        height: calc(100% - var(--topNavbarHeight));
+    }
+}

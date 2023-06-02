@@ -1,3 +1,3 @@
 <?php
-$conn = mysqli_connect('localhost','root','','security_portal')
+$conn = mysqli_connect('localhost','root','','security_portal');
 ?>

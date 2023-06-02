@@ -12,17 +12,18 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_num_rows($result) > 0) {
         $error[] = 'user already exist';
-    } else {
+    } 
+    else {
 
         if ($pass != $cpass) {
             $error[] = 'password not match';
         } else {
             $insert = "INSERT INTO user_form(name,email,password) VALUES('$name','$email','$pass')";
             mysqli_query($conn, $insert);
-            header('location:index.php');
+            header('location:../login.php');
         }
     }
-}
+};
 ?>
 
 <!-- -------------------------html ----------------------------------->
@@ -70,8 +71,8 @@ if (isset($_POST['submit'])) {
                         if (isset($error)) {
                             foreach ($error as $error) {
                                 echo "<p>$error</p>";
-                            }
-                        }
+                            };
+                        };
                         ?>
                     </div>
                     <form action="" method="post">
@@ -100,7 +101,7 @@ if (isset($_POST['submit'])) {
 
         </div>
     </div>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>
