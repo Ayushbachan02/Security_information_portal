@@ -29,9 +29,6 @@ if (isset($_POST['submit'])) {
             $error[] = 'Incorrect email or password';
         }
     }
-    else {
-        echo "hello world";
-    }
 };
 ?>
 
