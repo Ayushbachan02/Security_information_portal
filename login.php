@@ -2,28 +2,35 @@
 @include 'config.php';
 session_start();
 if (isset($_POST['submit'])) {
-    // $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
+    // $name = mysqli_real_escape_string($conn, $_POST['name']);
     $pass = md5($_POST['password']);
     // $cpass = md5($_POST['cpassword']);
     // $user_type = $_POST["user_type"];
 
-    $select = "SELECT * from user_form where email = '$email' && password = '$pass'";
+    $select = "SELECT * from user_form where email = '$email'";
     $result = mysqli_query($conn, $select);
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
-        if($row['user_type']=='admin'){
+        if($row['user_type']=='admin' ){
+            if($pass==$row['password']){
             $_SESSION['admin_name']==$row['name'];
-            header('location:Admin/Utility/Adminpage.php');   
+            header('location:Admin/Utility/Adminpage.php'); }
+
         }
         elseif($row['user_type']=='user'){
+            $test02 = password_verify($pass, $row['password']);  
+            if ($test02){
             $_SESSION['user_name']==$row['name'];
-            header('location:User/Utility/userpage.php');   
+            header('location:User/Utility/userpage.php');  } 
         }
         else{
             $error[] = 'Incorrect email or password';
         }
+    }
+    else {
+        echo "hello world";
     }
 };
 ?>

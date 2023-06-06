@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
                         };
                         ?>
                     </div>
-                    <form action="" method="post">
+                    <form action="" method="post" id="f">
                         <div class="form-group mb-3">
                             <input type="text" name="name" class="form-control form-control-lg gb-light fs-6" placeholder="Full Name">
                         </div>
