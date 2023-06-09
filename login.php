@@ -1,35 +1,55 @@
 <?php
 @include 'config.php';
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+// Here the user will be prevented from revisit the login page after login #Saksham
+if((isset($_SESSION['admin_name']))||(isset($_SESSION['user_name']))){
+    if($_SESSION['user_typ']=="user"){
+        header("location: User/Utility/userpage.php");
+    }
+    else{
+        header("location: Admin/Utility/Adminpage.php");
+    }
+}
+// ------------------------------------
+
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    // $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $pass = md5($_POST['password']);
-    // $cpass = md5($_POST['cpassword']);
-    // $user_type = $_POST["user_type"];
+    $pass = $_POST['password'];
 
     $select = "SELECT * from user_form where email = '$email'";
     $result = mysqli_query($conn, $select);
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_array($result);
-        if($row['user_type']=='admin' ){
-            if($pass==$row['password']){
-            $_SESSION['admin_name']==$row['name'];
-            header('location:Admin/Utility/Adminpage.php'); }
-
-        }
-        elseif($row['user_type']=='user'){
-            $test02 = password_verify($pass, $row['password']);  
-            if ($test02){
-            $_SESSION['user_name']==$row['name'];
-            header('location:User/Utility/userpage.php');  } 
+    
+    $numrows=mysqli_num_rows($result);
+    if ($numrows > 0){
+        $allrow=mysqli_fetch_array($result);
+        if($allrow['user_type']=="admin"){
+            if($pass==$allrow['password']){
+                $_SESSION['admin_name']=$allrow['name'];
+                $_SESSION['user_typ']=$allrow['user_type'];
+                header("location: Admin/Utility/Adminpage.php");
+            }
+            else{
+                $error[] = 'Incorrect email or password';
+            }
         }
         else{
-            $error[] = 'Incorrect email or password';
+            $checkPass=password_verify($pass,$allrow['password']);
+            if($checkPass){
+                $_SESSION['user_name']=$allrow['name'];
+                $_SESSION['user_typ']=$allrow['user_type'];
+                header("location: User/Utility/userpage.php");
+            }
+            else{
+                $error[] = 'Incorrect email or password';
+            }
         }
+        
+
     }
-};
+}
 ?>
 
 

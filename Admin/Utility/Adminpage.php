@@ -1,14 +1,16 @@
-<!-- <?php
+<?php
 
 @include '../config.php';
 
-session_start();
+if(!isset($_SESSION)){
+  session_start();
+}
 
-// if(!isset($_SESSION['admin_name'])){
-//    header('location:../../login.php');
-// }
+if($_SESSION['admin_name']==null){
+   header('location:../../login.php');
+}
 
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +34,7 @@ session_start();
         <img src="logo/infinite.png" alt="Bootstrap" width="30" height="30">
         <span>Admin Portal</span>
       </a>
-      <button class="btn btn-outline-danger" type="submit">Logout</button>
+      <a class="btn btn-Danger" href="../../logout.php" role="button">Logout</a>
     </div>
   </nav>
   <!------------------------sidebar start here----------------------------->
@@ -49,7 +51,7 @@ session_start();
           <ul class="nav nav-tabs flex-column mt-4  ">
             <li class="nav-item">
               <a href="#" class="nav-link text-white rounded-2">
-                <img src="../Images/icons/User.png" width="20px"  alt="user_image">
+                <img src="../Images/icons/User.png" width="20px" alt="user_image">
                 <span class="fs-6 d-none d-sm-inline ms-1">User</span>
               </a>
             </li>
