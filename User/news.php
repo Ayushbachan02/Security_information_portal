@@ -7,7 +7,7 @@ session_start();
 
 if ($_SESSION['user_name'] == null) {
     header('location:../../login.php');
-}
+} 
 
 ?>
 

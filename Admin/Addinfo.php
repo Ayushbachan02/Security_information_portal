@@ -17,7 +17,7 @@ if ($_SESSION['admin_name'] == null) {
 
 <head>
   <?php require "partials/header.php" ?>
-  <script type="module" src="Javascript/home.js"></script>
+  <script type="module" src="Javascript/info.js"></script>
 </head>
 
 <body>
@@ -112,23 +112,23 @@ if ($_SESSION['admin_name'] == null) {
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="addUserForm">
+          <form action="" id="addinfoForm">
 
             <div class="form-group">
               <label for="">Photo title:</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="heading" name="heading">
             </div>
             
             <div class="form-group">
               <label for="">Information Message:</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="content" name="content">
             </div>
          
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="addUserSubmit">Save</button>
+          <button class="btn btn-primary" id="addinfoSubmit">Save</button>
         </div>
       </div>
     </div>

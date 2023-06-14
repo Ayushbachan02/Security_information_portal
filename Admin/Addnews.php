@@ -17,7 +17,7 @@ if ($_SESSION['admin_name'] == null) {
 
 <head>
   <?php require "partials/header.php" ?>
-  <script type="module" src="Javascript/home.js"></script>
+  <script type="module" src="Javascript/news.js"></script>
 </head>
 
 <body>
@@ -72,8 +72,8 @@ if ($_SESSION['admin_name'] == null) {
       </div>
 
     </div>
-    
-      <!------------------------sidebar  Ends here----------------------------->
+
+    <!------------------------sidebar  Ends here----------------------------->
 
     <div class="container-fluid col">
       <div class="row mt-3  ">
@@ -112,23 +112,23 @@ if ($_SESSION['admin_name'] == null) {
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="addUserForm">
+          <form action="" id="addnewsForm">
 
             <div class="form-group">
               <label for="">News title:</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="title" name="title">
             </div>
-            
+
             <div class="form-group">
               <label for="">News Message:</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="news" name="news">
             </div>
-         
+
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="addUserSubmit">Save</button>
+          <button class="btn btn-primary" id="addnewsSubmit">Save</button>
         </div>
       </div>
     </div>

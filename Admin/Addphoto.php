@@ -1,6 +1,7 @@
 <?php
 
 @include '../config.php';
+ 
 
 if (!isset($_SESSION)) {
   session_start();
@@ -10,6 +11,8 @@ if ($_SESSION['admin_name'] == null) {
   header('location:../index.php');
 }
 
+require './Actions/add_photo.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +20,7 @@ if ($_SESSION['admin_name'] == null) {
 
 <head>
   <?php require "partials/header.php" ?>
-  <script type="module" src="Javascript/home.js"></script>
+  <script type="module" src="Javascript/image.js"></script>
 </head>
 
 <body>
@@ -72,8 +75,8 @@ if ($_SESSION['admin_name'] == null) {
       </div>
 
     </div>
-    
-      <!------------------------sidebar  Ends here----------------------------->
+
+    <!------------------------sidebar  Ends here----------------------------->
 
     <div class="container-fluid col">
       <div class="row mt-3  ">
@@ -112,21 +115,24 @@ if ($_SESSION['admin_name'] == null) {
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="addUserForm">
+          <form action="" id="addphotoForm">
 
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="">Photo title:</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="form-group mb-2">
+              <input type="date" id="eventdate" name="eventdate"/>
             </div>
             <div class="form-group">
               <label for="">Select Photo</label><br>
-              <button class="btn btn-primary" id="addUserSubmit">upload</button>
+              <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" />
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="addUserSubmit">Save</button>
+          <button class="btn btn-primary" id="addphotoSubmit"">Upload</button>
         </div>
       </div>
     </div>
