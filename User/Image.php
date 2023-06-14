@@ -1,6 +1,7 @@
 <?php
 
 @include 'config.php';
+@include './Actions/visitor_count.php';
 
 session_start();
 
@@ -9,43 +10,6 @@ if ($_SESSION['user_name'] == null) {
 }
 
 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "security_portal";
-
-//connection to database
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-if (mysqli_connect_errno()) {
-    die("error connecting to the database");
-}
-
-//adding new visitor
-$visitor_ip = $_SERVER['REMOTE_ADDR'];
-
-//checking if the visitor is unique
-$query = "SELECT * FROM visitor_counter WHERE ip_address='$visitor_ip'";
-$result = mysqli_query($connect, $query);
-
-//checking query error
-if (!$result) {
-    die("Retriving Query Error<br>" . $query);
-}
-$total_visitors = mysqli_num_rows($result);
-if ($total_visitors < 1) {
-    $query = "INSERT INTO visitor_counter(ip_address) VALUES('$visitor_ip')";
-    $result = mysqli_query($connect, $query);
-}
-
-//retriving exiting visitors
-$query = "SELECT * FROM visitor_counter ";
-$result = mysqli_query($connect, $query);
-if (!$result) {
-    die("Retriving Query Error<br>" . $query);
-}
-$total_visitors = mysqli_num_rows($result);
-
-$page = 'bye';
 ?>
 
 
@@ -56,12 +20,7 @@ $page = 'bye';
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <title>Image</title>
+    <?php require "partials/header.php" ?>
 </head>
 
 <body>
@@ -89,7 +48,7 @@ $page = 'bye';
                 </a>
                 <ul class="nav nav-tabs flex-column mt-3">
                     <li class="nav-item ">
-                        <a href="./Utility/userpage.php" class="nav-link text-black rounded-2 ">
+                        <a href="userpage.php" class="nav-link text-black rounded-2 ">
                             <img src="Images/fi-rr-home.png" width="20px" alt="user_image">
                             <span class="fs-6 d-none d-sm-inline ms-1">Home</span>
                         </a>
@@ -113,7 +72,7 @@ $page = 'bye';
                         </a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a href="Image.php" class="nav-link text-black rounded-2 active" >
+                        <a href="Image.php" class="nav-link text-black rounded-2 active">
                             <img src="Images/fi-rr-picture.png" width="20px" alt="">
                             <span class="fs-6 d-none d-sm-inline  ms-1">Images</span>
                         </a>

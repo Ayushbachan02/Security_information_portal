@@ -6,10 +6,10 @@ if(!isset($_SESSION)){
 // Here the user will be prevented from revisit the login page after login #Saksham
 if((isset($_SESSION['admin_name']))||(isset($_SESSION['user_name']))){
     if($_SESSION['user_typ']=="user"){
-        header("location: User/Utility/userpage.php");
+        header("location: User/userpage.php");
     }
     else{
-        header("location: Admin/Utility/Adminpage.php");
+        header("location: Admin/home.php");
     }
 }
 // ------------------------------------
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
             if($pass==$allrow['password']){
                 $_SESSION['admin_name']=$allrow['name'];
                 $_SESSION['user_typ']=$allrow['user_type'];
-                header("location: Admin/Utility/Adminpage.php");
+                header("location: Admin/home.php");
             }
             else{
                 $error[] = 'Incorrect email or password';
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
             if($checkPass){
                 $_SESSION['user_name']=$allrow['name'];
                 $_SESSION['user_typ']=$allrow['user_type'];
-                header("location: User/Utility/userpage.php");
+                header("location: User/userpage.php");
             }
             else{
                 $error[] = 'Incorrect email or password';

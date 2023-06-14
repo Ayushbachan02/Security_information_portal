@@ -1,15 +1,12 @@
 <?php
 include '../../config.php';
-
-if(isset($_POST['display'])){
     $table= '<table class="table">
     <thead>
       <tr>
-        <th scope="col">sl no</th>
+        <th scope="col">Sl.No</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
-        <th scope="col">Password</th>
-        <th scope="col">user-type</th>
+        <th scope="col">User Type</th>
         <th scope="col">Operation</th>
       </tr>
     </thead>';
@@ -20,13 +17,11 @@ if(isset($_POST['display'])){
           <th scope="row">'.$row['id'].'</th>
           <td>'.$row['name'].'</td>
           <td>'.$row['email'].'</td>
-          <td>'.$row['password'].'</td>
           <td>'.$row['user_type'].'</td>
+          <td>'.'Operation here'.'</td>
         </tr>';
     }
     $table .= '</table>';
     echo $table;
-
-}
 
 ?>
