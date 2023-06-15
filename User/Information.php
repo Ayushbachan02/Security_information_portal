@@ -20,7 +20,7 @@ if ($_SESSION['user_name'] == null) {
 <html lang="en">
 
 <head>
-<?php require "partials/header.php" ?>
+    <?php require "partials/header.php" ?>
 </head>
 
 <body>
@@ -48,7 +48,7 @@ if ($_SESSION['user_name'] == null) {
                 </a>
                 <ul class="nav nav-tabs flex-column mt-3">
                     <li class="nav-item ">
-                    <a href="userpage.php" class="nav-link text-black rounded-2 ">
+                        <a href="userpage.php" class="nav-link text-black rounded-2 ">
                             <img src="Images/fi-rr-home.png" width="20px" alt="user_image">
                             <span class="fs-6 d-none d-sm-inline ms-1">Home</span>
                         </a>
@@ -92,9 +92,40 @@ if ($_SESSION['user_name'] == null) {
         </div>
 
         <div class="container-fluid col">
+            <div class="row mt-2">
+                <?php
 
+                @include '../config.php';
+                $query = "SELECT * FROM infodb";
+                $query_run = mysqli_query($conn, $query);
+                $check_news = mysqli_num_rows($query_run) > 0;
+
+                if ($check_news) {
+                    while ($data = mysqli_fetch_assoc($query_run)) {
+                ?>
+                        <div class="col-100%  mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title"><?php echo $data['heading']; ?></h3>
+                                    <p class="card-text"><?php echo $data['content']; ?></p>
+                                </div>
+                            </div>
+
+                        </div>
+                <?php
+
+                    }
+                } else {
+                    echo "no news found";
+                }
+
+                ?>
+
+
+            </div>
         </div>
     </div>
+
 
 
 

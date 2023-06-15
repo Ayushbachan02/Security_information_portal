@@ -91,7 +91,41 @@ if ($_SESSION['user_name'] == null) {
         </div>
 
         <div class="container-fluid col">
+            <div class="row mt-2">
+                <?php
 
+                @include '../config.php';
+                $query = "SELECT * FROM newsdb";
+                $query_run = mysqli_query($conn,$query);
+                $check_news = mysqli_num_rows($query_run) > 0;
+                
+                if($check_news)
+                {
+                    while ($data=mysqli_fetch_assoc($query_run))
+                    {
+                        ?>
+                        <div class="col-md-5 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title"><?php echo $data['title']; ?></h3>
+                                <p class="card-text"><?php echo $data['news']; ?></p>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <?php
+                        
+                    }
+                }
+                else
+                {
+                    echo "no news found";
+                }
+
+                ?>
+
+                
+            </div>
         </div>
     </div>
 
