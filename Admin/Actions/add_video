@@ -2,10 +2,9 @@
 
 @include '../../config.php';
 //receiving data through POST and assigning to variables 
-if (isset($_POST['addPhoto'])) {
+if (isset($_POST['addvideo'])) {
     $no_of_files = count($_FILES['files']['name']);
-    $event_name = $_POST['title'];
-    $event_date = date('Y-m-d', strtotime($_POST['eventdate']));
+    $video_name = $_POST['title'];
 
     //$directory=$_FILES['files']['full_path'];
     // echo $event_name." contains ".$no_of_files." files.".$directory."<br>";
@@ -16,8 +15,8 @@ if (isset($_POST['addPhoto'])) {
     if ($_POST['title'] != "") {
         $title = $_POST['title'];
         $path = $title . "/";
-        if (!is_dir("images/" . $title)) {
-            mkdir("images/" . $title,0777,true);
+        if (!is_dir("video/" . $title)) {
+            mkdir("video/" . $title,0777,true);
         }
         foreach ($_FILES['files']['name'] as $i => $name) {
             if (strlen($_FILES['files']['name'][$i]) > 1) {
@@ -30,27 +29,7 @@ if (isset($_POST['addPhoto'])) {
 
 
     //sql query to create a table named Service with three columns
-    $query = 'INSERT INTO photodb (path,event_name,event_date,no_of_files) values("' . $path . '","' . $event_name . '","' . $event_date . '","' . $no_of_files . '")';
-    if (!mysqli_query($conn, $query)) {
-        echo "Error:" . mysqli_error($conn);
-    }
-}
-?>
-<!-----------------------------update---------------------------------------------->
-<?php
-
-@include '../../config.php';
-//receiving data through POST and assigning to variables 
-if (isset($_POST['editPhoto'])) {
-
-    $event_name = $_POST['title'];
-    $event_date = date('Y-m-d', strtotime($_POST['eventdate']));
-
-
-
-    //sql query to create a table named Service with three columns
-    $sql = "UPDATE `photodb`  SET  `event_name` = '" . $event_name . "'  , `event_date` =  '" . $event_date . "' ";
-
+    $query = 'INSERT INTO videodb (path,video_name,no_of_files) values("' . $path . '","' . $video_name . '","' . $no_of_files . '")';
     if (!mysqli_query($conn, $query)) {
         echo "Error:" . mysqli_error($conn);
     }

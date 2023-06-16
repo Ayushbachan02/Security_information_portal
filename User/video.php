@@ -19,22 +19,14 @@ if ($_SESSION['user_name'] == null) {
 <html lang="en">
 
 <head>
-<?php require "partials/header.php" ?>
+    <?php require "partials/header.php" ?>
+    <script type="module" src="Javascript/video.js"></script>
+
 </head>
 
 <body>
 
-    <!----------------------------navigation menu------------------------------->
-    <nav class="navbar bg-body-tertiary ">
-        <div class="container-fluid">
-            <a class="navbar-brand " href="#">
-                <img src="./Utility/logo/infinite.png" alt="Bootstrap" width="30" height="30">
-                <span>Information Security Portal</span>
-            </a>
-            <span class="visitor counter"><img src="Images/fi-rr-eye.png" width="15px" alt="user_image"> <?php echo $total_visitors; ?></span>
-
-        </div>
-    </nav>
+    <?php require "partials/navbar.php" ?>
     <!------------------------sidebar start here----------------------------->
 
 
@@ -91,26 +83,101 @@ if ($_SESSION['user_name'] == null) {
         </div>
 
         <div class="container-fluid col">
+            <div class="row mt-3  ">
+                <div class="col-md-12">
+                    <div class="card-header">
+                        <!-- addaed by #saksham -->
+                        <!-- <h1>This is the main front page of admin</h1> -->
+                        <!-- ------------------ -->
+                        <h4 class="card-title">video List
+
+                            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#videoaddModal">
+                                Add video
+                            </button>
+                        </h4>
+                    </div>
+                    <div class="card-body" id="videotable">
+                    <form action="" id="addvideoForm" enctype="multipart/form-data">
+                        <div class="form-group mb-3">
+                            <label for="">video title:</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Select video: </label><br>
+                            <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
+
     </div>
+    </div>
+    <!-----------------------------------------model----------------------------->
+    <div class="modal fade" id="videoaddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Photo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="alert alert-warning d-none">
+
+                    </div>
+                    <form action="" id="addvideoForm" enctype="multipart/form-data">
+                        <div class="form-group mb-3">
+                            <label for="">video title:</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Select video: </label><br>
+                            <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" id="addvideoSubmit"">Upload</button>
+                </div>
+            </div>
+        </div>
+  </div>
+  <!-- --------------------------------------------- -->
+  <!-- Modal 2 -->
+  <div class=" modal fade" id="videoeditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Photo</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="alert alert-warning d-none">
+
+                                    </div>
+                                    <form action="" id="editvideoForm">
+
+                                        <div class="form-group mb-3">
+                                            <label for="">video title:</label>
+                                            <input type="text" class="form-control" id="titleEdit" name="title">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" id="editvideoSubmit"">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -------------------------- -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="../bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>

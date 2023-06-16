@@ -4,6 +4,7 @@ import { getText, postData } from "./fetch.js";
 function displayText(text){
     const userTableContainer=document.getElementById("infotable");
     userTableContainer.innerHTML=text;
+    bodyFunc();
 }
 
 // function to display post response text
@@ -30,4 +31,38 @@ addinfoSubmit.addEventListener("click",(evnt)=>{
 })
 
 
-//function to edit the user_list
+//function to edit the info_list
+
+function displayEdit(data) {
+    let heading = data.heading;
+    let content = data.content;
+    document.querySelector("#titleEdit").value = heading;
+    document.querySelector("#infoEdit").value = content;
+  }
+  
+  function bodyFunc() {
+    const allEditBtn = document.querySelectorAll(".editBtn");
+    console.log(allEditBtn);
+    Array.from(allEditBtn).forEach((elem) => {
+      elem.addEventListener("click", () => {
+        let takenId = parseInt(elem.getAttribute("id_name"));
+        let editData = {
+          editDataSend: true,
+          id_val: takenId,
+        };
+        postData("./Actions/edit_info.php", editData, displayEdit, editinfoForm);
+      });
+    });
+  }
+  
+  const data1={
+    "editinfo":true
+}
+const editinfoForm=document.getElementById("editinfoForm");
+const editinfoSubmit=document.getElementById("editinfoSubmit");
+
+// adding event listener to the submit button of add user
+editinfoSubmit.addEventListener("click",(evnt)=>{
+    // sending post request for gettiing the adduser form submit
+    postData("./Actions/add_info.php",data1,diaplayPost,editinfoForm);
+})

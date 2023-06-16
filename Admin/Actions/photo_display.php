@@ -7,7 +7,7 @@ include '../../config.php';
         <th scope="col">title</th>
         <th scope="col">Folder name</th>
         <th scope="col">No of files</th>
-        <th scope="col">Operation</th>
+        <th scope="col">Opeartions</th>
       </tr>
     </thead>';
     $sql="SELECT * FROM `photodb`";   
@@ -15,10 +15,10 @@ include '../../config.php';
     while($row = mysqli_fetch_assoc($result)){
         $table .= '<tr>
           <th scope="row">'.$row['id'].'</th>
-          <td>'.$row['title'].'</td>
           <td>'.$row['event_name'].'</td>
+          <td>'.$row['event_date'].'</td>
           <td>'.$row['no_of_files'].'</td>
-          <td>'.'Operation here'.'</td>
+          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#photoeditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
         </tr>';
     }
     $table .= '</table>';

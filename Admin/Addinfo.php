@@ -115,7 +115,7 @@ if ($_SESSION['admin_name'] == null) {
           <form action="" id="addinfoForm">
 
             <div class="form-group">
-              <label for="">Photo title:</label>
+              <label for="">Info title:</label>
               <input type="text" class="form-control" id="heading" name="heading">
             </div>
             
@@ -133,6 +133,41 @@ if ($_SESSION['admin_name'] == null) {
       </div>
     </div>
   </div>
+
+      <!-- --------------------------------------------- -->
+  <!-- Modal 2 -->
+  <div class="modal fade" id="infoeditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit news</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="alert alert-warning d-none">
+
+          </div>
+          <form action="" id="editinfoForm">
+
+            <div class="form-group mb-3">
+              <label for="">Info title:</label>
+              <input type="text" class="form-control" id="titleEdit" name="title">
+            </div>
+            <div class="form-group mb-3">
+              <label for="">Information Message:</label>
+              <input type="text" class="form-control" id="infoEdit" name="info">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary" id="editinfoSubmit"">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -------------------------- -->
 
 
 </body>
