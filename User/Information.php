@@ -103,15 +103,35 @@ if ($_SESSION['user_name'] == null) {
                 if ($check_news) {
                     while ($data = mysqli_fetch_assoc($query_run)) {
                 ?>
-                        <div class="col-100%  mb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h3 class="card-title"><?php echo $data['heading']; ?></h3>
-                                    <p class="card-text"><?php echo $data['content']; ?></p>
-                                </div>
-                            </div>
 
+
+                        <div class="card mb-2 w-95 mx-2">
+                            <div class="card-header ">
+                            <?php echo $data['heading']; ?>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text"><?php echo $data['content']; ?></p>
+                            </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+                        <!-- <div class="col-100%  mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="card-title"><?php echo $data['heading']; ?></h3>
+                                        <p class="card-text"><?php echo $data['content']; ?></p>
+                                    </div>
+                                </div>
+
+                            </div> -->
                 <?php
 
                     }

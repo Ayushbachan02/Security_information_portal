@@ -7,7 +7,7 @@ session_start();
 
 if ($_SESSION['user_name'] == null) {
     header('location:../../login.php');
-} 
+}
 
 ?>
 
@@ -19,7 +19,7 @@ if ($_SESSION['user_name'] == null) {
 <html lang="en">
 
 <head>
-<?php require "partials/header.php" ?>
+    <?php require "partials/header.php" ?>
 </head>
 
 <body>
@@ -47,7 +47,7 @@ if ($_SESSION['user_name'] == null) {
                 </a>
                 <ul class="nav nav-tabs flex-column mt-3">
                     <li class="nav-item ">
-                    <a href="userpage.php" class="nav-link text-black rounded-2 ">
+                        <a href="userpage.php" class="nav-link text-black rounded-2 ">
                             <img src="Images/fi-rr-home.png" width="20px" alt="user_image">
                             <span class="fs-6 d-none d-sm-inline ms-1">Home</span>
                         </a>
@@ -96,38 +96,36 @@ if ($_SESSION['user_name'] == null) {
 
                 @include '../config.php';
                 $query = "SELECT * FROM newsdb";
-                $query_run = mysqli_query($conn,$query);
+                $query_run = mysqli_query($conn, $query);
                 $check_news = mysqli_num_rows($query_run) > 0;
-                
-                if($check_news)
-                {
-                    while ($data=mysqli_fetch_assoc($query_run))
-                    {
-                        ?>
-                        <div class="col-md-5 mb-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title"><?php echo $data['title']; ?></h3>
-                                <p class="card-text"><?php echo $data['news']; ?></p>
+
+                if ($check_news) {
+                    while ($data = mysqli_fetch_assoc($query_run)) {
+                ?>
+
+                        <div class="row">
+                            <div class="col-sm-5 mb-3 mb-sm-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $data['title']; ?></h5>
+                                        <p class="card-text"><?php echo $data['news']; ?></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-    
-                    </div>
+
                     <?php
-                        
+
                     }
-                }
-                else
-                {
+                } else {
                     echo "no news found";
                 }
 
-                ?>
+                    ?>
 
-                
+
+                        </div>
             </div>
         </div>
-    </div>
 
 
 
@@ -144,7 +142,7 @@ if ($_SESSION['user_name'] == null) {
 
 
 
-    <script src="../bootstrap/js/bootstrap.js"></script>
+        <script src="../bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ include '../../config.php';
       <tr>
         <th scope="col">Sl.No</th>
         <th scope="col">title</th>
-        <th scope="col">No of files</th>
+        <th scope="col">name</th>
         <th scope="col">Opeartions</th>
       </tr>
     </thead>';
@@ -14,8 +14,8 @@ include '../../config.php';
     while($row = mysqli_fetch_assoc($result)){
         $table .= '<tr>
           <th scope="row">'.$row['id'].'</th>
-          <td>'.$row['event_name'].'</td>
-          <td>'.$row['no_of_files'].'</td>
+          <td>'.$row['title'].'</td>
+          <td>'.$row['name'].'</td>
           <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#videoeditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
         </tr>';
     }

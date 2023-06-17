@@ -1,6 +1,6 @@
 <?php
 
-@include 'config.php';
+@include '../config.php';
 @include './Actions/visitor_count.php';
 
 session_start();

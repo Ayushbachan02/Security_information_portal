@@ -59,8 +59,9 @@ if ($_POST["editinfo"] != null) {
     // The user addition form data
     $heading = $_POST['title'];
     $content = $_POST['info'];
+    $id= $_POST['id' ];
 
-    $sql = "UPDATE `infodb`  SET  `heading` = '" . $heading . "'  , `content` =  '" . $content . "' ";
+    $sql = "UPDATE `infodb`  SET  `heading` = '" . $heading . "'  , `content` =  '" . $content . "' WHERE `id` = $id ";
 
     $result = mysqli_query($conn, $sql);
 

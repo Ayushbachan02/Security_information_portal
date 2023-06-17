@@ -27,7 +27,7 @@ const addvideoSubmit=document.getElementById("addvideoSubmit");
 // adding event listener to the submit button of add user
 addvideoSubmit.addEventListener("click",(evnt)=>{
     // sending post request for gettiing the adduser form submit
-    postData("./Actions/add_photo.php",data,diaplayPost,addvideoForm);
+    postData("./Actions/add_video.php",data,diaplayPost,addvideoForm);
 })
 
 function displayEdit(data){
