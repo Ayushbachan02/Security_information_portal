@@ -116,7 +116,7 @@ require './Actions/add_photo.php';
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="addphotoForm" enctype="multipart/form-data">
+          <form action="" id="addphotoForm" enctype="multipart/form-data" method="POST">
 
             <div class="form-group mb-3">
               <label for="">Photo title:</label>

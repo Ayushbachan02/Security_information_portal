@@ -24,7 +24,7 @@ require './Actions/add_video.php';
 </head>
 
 <body>
-  <?php require "partials/navbar.php" ?>
+  <?php require "partials/navbar.php"; ?>
   <!------------------------sidebar start here----------------------------->
 
 
@@ -89,15 +89,6 @@ require './Actions/add_video.php';
             </h4>
           </div>
           <div class="card-body" id="videotable">
-            <form action="" id="addvideoForm" enctype="multipart/form-data">
-              <div class="form-group mb-3">
-                <label for="">video title:</label>
-                <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="form-group">
-                <label for="">Select video: </label><br>
-                <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" moxdirectory="" />
-              </div>
           </div>
         </div>
 
@@ -120,20 +111,20 @@ require './Actions/add_video.php';
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="addvideoForm" enctype="multipart/form-data">
+          <form action="" id="addvideoForm" enctype="multipart/form-data" method="POST">
             <div class="form-group mb-3">
               <label for="">video title:</label>
               <input type="text" class="form-control" id="title" name="title">
             </div>
             <div class="form-group">
               <label for="">Select video: </label><br>
-              <input type='file' name='file' />
+              <input type="file" name="videoFile">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="addvideoSubmit"">Upload</button>
+          <button class="btn btn-primary" id="addvideoSubmit">Upload</button>
                 </div>
             </div>
         </div>

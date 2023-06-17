@@ -127,7 +127,7 @@ if ($_SESSION['admin_name'] == null) {
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  id="closeaddModal">Close</button>
           <button class="btn btn-primary" id="addnewsSubmit">Save</button>
         </div>
       </div>
@@ -161,8 +161,8 @@ if ($_SESSION['admin_name'] == null) {
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="editnewsSubmit"">Save Changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeEditModal">Close</button>
+          <button class="btn btn-primary" id="editnewsSubmit" idToEdit="">Save Changes</button>
         </div>
       </div>
     </div>

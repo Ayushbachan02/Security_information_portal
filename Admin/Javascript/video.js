@@ -22,6 +22,7 @@ const data={
     "addvideo":true
 }
 const addvideoForm=document.getElementById("addvideoForm");
+console.log(addvideoForm);
 const addvideoSubmit=document.getElementById("addvideoSubmit");
 
 // adding event listener to the submit button of add user

@@ -18,7 +18,7 @@ include '../../config.php';
           <td>'.$row['name'].'</td>
           <td>'.$row['email'].'</td>
           <td>'.$row['user_type'].'</td>
-          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="usereditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
+          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#usereditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
         </tr>';
     }
     $table .= '</table>';

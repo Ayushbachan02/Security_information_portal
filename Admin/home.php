@@ -112,7 +112,7 @@ if ($_SESSION['admin_name'] == null) {
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="addUserForm">
+          <form action="" id="adduserForm">
 
             <div class="form-group">
               <label for="">Name:</label>
@@ -133,8 +133,8 @@ if ($_SESSION['admin_name'] == null) {
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="addUserSubmit">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeaddModal">Close</button>
+          <button class="btn btn-primary" id="adduserSubmit">Save</button>
         </div>
       </div>
     </div>
@@ -154,7 +154,7 @@ if ($_SESSION['admin_name'] == null) {
           <div class="alert alert-warning d-none">
 
           </div>
-          <form action="" id="editUserForm">
+          <form action="" id="edituserForm">
             <div class="form-group">
               <label for="">Name:</label>
               <input type="text" class="form-control" id="editname" name="name">
@@ -174,8 +174,8 @@ if ($_SESSION['admin_name'] == null) {
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary" id="editUserSubmit"">Save Changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeEditModal">Close</button>
+          <button class="btn btn-primary" id="edituserSubmit"">Save Changes</button>
         </div>
       </div>
     </div>

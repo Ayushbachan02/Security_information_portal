@@ -1,8 +1,8 @@
 <?php
 require "../../config.php";
 
-    if($_POST["addnews"]!=null){
-            $reciev=$_POST["addnews"];
+    if($_POST["checkNews"]=="add"){
+            $reciev=$_POST["checkNews"];
 
             // The user addition form data
             $title=$_POST['title'];
@@ -27,42 +27,17 @@ require "../../config.php";
                 'message'=>'The user could not added successfully. Please try again',
                 ];
             }
-
-            // uncomment the above code and execute the query it will work
-            // This is just for checking fo your understanding remove this
-            // $response = [
-            //     'status'=>"ok",
-            //     'success'=>true,
-            //     'message'=>'We have got the from data successfully',
-            //     'You sended'=>$reciev,
-            //     "user name"=>$name,
-            //     "user email"=>$email,
-            //     "user password"=>$pswd,
-            //     "user type"=>$user_type,
-            // ];
-            // -----------------------------
-            print_r(json_encode($response));
         }
-        else{
-            $response = [
-                'status'=>'ok',
-                'success'=>false,
-                'message'=>'Something went wrong'
-            ];
-            print_r(json_encode($response));
-        }
-?>
-<?php
-require "../../config.php";
-
-    if($_POST["editnews"]!=null){
-            $reciev=$_POST["editnews"];
+        else if($_POST["checkNews"]=="edit"){
+            $reciev=$_POST["checkNews"];
 
             // The user addition form data
             $title=$_POST['title'];
             $news=$_POST['news'];
+            $idWhereEdit=intval($_POST['editThisId']);
 
-            $sql = "UPDATE `newsdb`  SET  `title` = '" . $title . "'  , `news` =  '" . $news . "' ";
+            // $sql = "UPDATE `newsdb`  SET  `title` = '" . $title . "'  , `news` =  '" . $news . "' ";
+            $sql="update newsdb set title = '$title', news='$news' where id = $idWhereEdit";
 
             $result=mysqli_query($conn,$sql);
 
@@ -82,21 +57,6 @@ require "../../config.php";
                 'message'=>'The user could not added successfully. Please try again',
                 ];
             }
-
-            // uncomment the above code and execute the query it will work
-            // This is just for checking fo your understanding remove this
-            // $response = [
-            //     'status'=>"ok",
-            //     'success'=>true,
-            //     'message'=>'We have got the from data successfully',
-            //     'You sended'=>$reciev,
-            //     "user name"=>$name,
-            //     "user email"=>$email,
-            //     "user password"=>$pswd,
-            //     "user type"=>$user_type,
-            // ];
-            // -----------------------------
-            print_r(json_encode($response));
         }
         else{
             $response = [

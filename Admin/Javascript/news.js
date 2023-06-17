@@ -13,12 +13,20 @@ function diaplayPost(data) {
   console.log("Actual message to show user = ", data.message);
 }
 
+// function to run after edit submit
+function displayEditMessage(data){
+  console.log(data);
+  console.log("Actual message to show user = ", data.message);
+  // sending get request for getting user data list
+  getText("./Actions/news_display_handle.php", displayText);
+}
+
 // sending get request for getting user data list
 getText("./Actions/news_display_handle.php", displayText);
 
 //
 const data = {
-  addnews: true,
+  checkNews: "add",
 };
 const addnewsForm = document.getElementById("addnewsForm");
 const addnewsSubmit = document.getElementById("addnewsSubmit");
@@ -27,6 +35,7 @@ const addnewsSubmit = document.getElementById("addnewsSubmit");
 addnewsSubmit.addEventListener("click", (evnt) => {
   // sending post request for gettiing the adduser form submit
   postData("./Actions/add_news.php", data, diaplayPost, addnewsForm);
+  document.querySelector("#closeaddModal").click();
 });
 
 //function to edit the news_list
@@ -39,8 +48,13 @@ function displayEdit(data) {
 }
 
 function bodyFunc() {
+  const editnewsForm = document.getElementById("editnewsForm");
+  const editnewsSubmit = document.getElementById("editnewsSubmit");
+
   const allEditBtn = document.querySelectorAll(".editBtn");
-  console.log(allEditBtn);
+  const saveChangeSubmit=document.querySelector("#editnewsSubmit");
+
+
   Array.from(allEditBtn).forEach((elem) => {
     elem.addEventListener("click", () => {
       let takenId = parseInt(elem.getAttribute("id_name"));
@@ -48,18 +62,23 @@ function bodyFunc() {
         editDataSend: true,
         id_val: takenId,
       };
+      saveChangeSubmit.setAttribute("idToEdit",takenId);
       postData("./Actions/edit_news.php", editData, displayEdit, addnewsForm);
     });
   });
-}
-const data1 = {
-  editnews: true,
-};
-const editnewsForm = document.getElementById("editnewsForm");
-const editnewsSubmit = document.getElementById("editnewsSubmit");
 
-// adding event listener to the submit button of add user
-editnewsSubmit.addEventListener("click", (evnt) => {
-  // sending post request for gettiing the adduser form submit
-  postData("./Actions/add_news.php", data1, diaplayPost, editnewsForm);
-});
+  
+  // adding event listener to the submit button of add user
+  editnewsSubmit.addEventListener("click", (evnt) => {
+    // sending post request for gettiing the adduser form submit
+    let idToSend = parseInt(saveChangeSubmit.getAttribute("idToEdit"));
+    console.log("edit id = ",idToSend);
+
+    let dataToFindEdit={
+      checkNews:"edit",
+      "editThisId":idToSend
+    }
+    postData("./Actions/add_news.php", dataToFindEdit, displayEditMessage, editnewsForm);
+    document.querySelector("#closeEditModal").click();
+  });
+}
