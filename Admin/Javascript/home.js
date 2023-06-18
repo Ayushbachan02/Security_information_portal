@@ -5,6 +5,7 @@ function displayText(text) {
   const userTableContainer = document.getElementById("usertable");
   userTableContainer.innerHTML = text;
   bodyFunc();
+  displayDelete();
 }
 
 // function to display post response text
@@ -86,4 +87,40 @@ function bodyFunc() {
     postData("./Actions/add_user.php", dataToFindEdit, displayEditMessage, edituserForm);
     document.querySelector("#closeEditModal").click();
   });
+}
+
+// function to delete the video_list
+function displayDelete() {
+  const deleteuserForm = document.getElementById("deleteuserForm");
+  const deleteuserSubmit = document.getElementById("deleteuserSubmit");
+
+  const allEditBtn = document.querySelectorAll(".editBtn");
+  const saveChangeSubmit=document.querySelector("#deleteuserSubmit");
+
+  Array.from(allEditBtn).forEach((elem) => {
+      elem.addEventListener("click", () => {
+          let takenId = parseInt(elem.getAttribute("id_name"));
+          let editData = {
+          editDataSend: true,
+          id_val: takenId,
+          };
+          saveChangeSubmit.setAttribute("idToDelete",takenId);
+          postData("./Actions/edit_user.php", editData, displayEdit, adduserForm);
+      });
+      }
+  );
+  // adding event listener to the submit button of add user
+  deleteuserSubmit.addEventListener("click", (evnt) => {
+      // sending post request for gettiing the adduser form submit
+      let idToSend = parseInt(saveChangeSubmit.getAttribute("idToDelete"));
+      console.log("edit id = ",idToSend);
+  
+      let dataToFindEdit={
+        user:"delete",
+        "deleteThisId":idToSend
+      }
+      postData("./Actions/add_user.php", dataToFindEdit, displayEditMessage, deleteuserForm);
+      document.querySelector("#closeDeleteModal").click();
+    }
+  );
 }

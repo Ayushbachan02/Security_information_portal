@@ -4,8 +4,8 @@ include '../../config.php';
     <thead>
       <tr>
         <th scope="col">Sl.No</th>
-        <th scope="col">title</th>
-        <th scope="col">File Name</th>
+        <th scope="col" width="30%">title</th>
+        <th scope="col" width="30%">File Name</th>
         <th scope="col">Operation</th>
       </tr>
     </thead>';
@@ -16,7 +16,7 @@ include '../../config.php';
           <th scope="row">'.$row['id'].'</th>
           <td>'.$row['title'].'</td>
           <td>'.$row['news'].'</td>
-          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#newseditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
+          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#newseditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger editBtn" data-bs-toggle="modal" data-bs-target="#newsdeleteModal">delete</button>'.'</td>
         </tr>';
     }
     $table .= '</table>';

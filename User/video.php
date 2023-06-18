@@ -40,37 +40,61 @@ if ($_SESSION['user_name'] == null) {
                 <ul class="nav nav-tabs flex-column mt-3">
                     <li class="nav-item ">
                         <a href="userpage.php" class="nav-link text-black rounded-2 ">
-                            <img src="Images/fi-rr-home.png" width="20px" alt="user_image">
+                            <img src="Images/home.svg" width="20px" alt="user_image">
                             <span class="fs-6 d-none d-sm-inline ms-1">Home</span>
                         </a>
                     </li>
                     <li class="nav-item mt-1 ">
                         <a href="news.php" class="nav-link text-black rounded-2">
-                            <img src="Images/fi-rr-physics.png" width="20px" alt="user_image">
+                            <img src="Images/news.svg" width="20px" alt="user_image">
                             <span class="fs-6 d-none d-sm-inline ms-1">News</span>
                         </a>
                     </li>
                     <li class="nav-item mt-1">
                         <a href="Information.php" class="nav-link text-black rounded-2">
-                            <img src="Images/fi-rr-globe.png" " width=" 20px" alt="list icons">
-                            <span class="fs-6 d-none d-sm-inline  ms-1">Information</span>
+                            <img src="Images/Information.svg" " width=" 20px" alt="list icons">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">Information </span>
                         </a>
                     </li>
                     <li class="nav-item mt-1">
                         <a href="video.php" class="nav-link text-black rounded-2 active">
-                            <img src="Images/fi-rr-play.png" width="20px" alt="banner icon">
-                            <span class="fs-6 d-none d-sm-inline  ms-1">Video</span>
+                            <img src="Images/video.svg" width="20px" alt="banner icon">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">Cyber Video</span>
                         </a>
                     </li>
                     <li class="nav-item mt-1">
                         <a href="Image.php" class="nav-link text-black rounded-2 ">
-                            <img src="Images/fi-rr-picture.png" width="20px" alt="">
-                            <span class="fs-6 d-none d-sm-inline  ms-1">Images</span>
+                            <img src="Images/gallery.svg" width="20px" alt="">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">Gallery</span>
+                        </a>
+                    </li>
+                     <li class="nav-item mt-1">
+                        <a href="complain.php" class="nav-link text-black rounded-2">
+                            <img src="Images/report.svg" width="20px" alt="">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">Report Complaint</span>
+                        </a>
+                    </li>
+                       <li class="nav-item mt-1">
+                        <a href="faq.php" class="nav-link text-black rounded-2">
+                            <img src="Images/faq.svg" width="21px" alt="">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">FAQ</span>
+                        </a>
+                    </li>
+                       <li class="nav-item mt-1">
+                        <a href="feedback.php" class="nav-link text-black rounded-2">
+                            <img src="Images/feedback.svg" width="22px" alt="">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">Feedback</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mt-1">
+                        <a href="contact.php" class="nav-link text-black rounded-2">
+                            <img src="Images/contact.svg" width="20px" alt="">
+                            <span class="fs-6 d-none d-sm-inline  ms-1">Contact Us</span>
                         </a>
                     </li>
                     <li class="logout">
                         <a href="../logout.php" class="nav-link text-black rounded-2">
-                            <img src="Images/logout.png" width="20px" alt="">
+                            <img src="Images/logout.svg" width="25px" alt="">
                             <span class="fs-6 d-none d-sm-inline  ms-1">Logout</span>
                         </a>
                     </li>
@@ -82,21 +106,26 @@ if ($_SESSION['user_name'] == null) {
 
         </div>
 
-        <div class="container-fluid col">
-            <div>
+        <div class="container-fluid col d-flex flex-row">
+            <?php
 
-                <?php
-            
-                $fetchVideos = mysqli_query($conn, "SELECT * FROM videodb ORDER BY id DESC");
-                while ($row = mysqli_fetch_assoc($fetchVideos)) {
-                    $location = $row['location'];
-                    $name = $row['title'];
-                    echo "<div style='float: left; margin-right: 5px;'><video src='" . $location . "' controls width='320px' height='320px' ></video><br><span>" . $name . "</span></div>";
-                }
+            $fetchVideos = mysqli_query($conn, "SELECT * FROM videodb ORDER BY id DESC");
+            while ($row = mysqli_fetch_assoc($fetchVideos)) {
+                $location = $row['location'];
+                $name = $row['title'];
+           
                 ?>
+            <div class="card mt-2 mx-1" style="width: 20rem ; height: 15rem;">
 
+                <video src="<?php echo "" . $location . "" ?>" controls></video>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"><?php echo " $name" ?> </p>
+                </div>
             </div>
-
+            <?php
+        }
+        ?>
         </div>
 
     </div>

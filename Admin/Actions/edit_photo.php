@@ -9,8 +9,8 @@ if(isset($_POST['editDataSend'])){
         $response = [
             'status'=>"ok",
             'success'=>true,
-            "evnt"=>$row["event_name"],
-            "Date"=>$row['event_date']
+            "title"=>$row["event_name"],
+            "date"=>$row['event_date']
             ];
     }
     print_r(json_encode($response));

@@ -5,6 +5,7 @@ function displayText(text) {
   const userTableContainer = document.getElementById("newstable");
   userTableContainer.innerHTML = text;
   bodyFunc();
+  displayDelete();
 }
 
 // function to display post response text
@@ -81,4 +82,40 @@ function bodyFunc() {
     postData("./Actions/add_news.php", dataToFindEdit, displayEditMessage, editnewsForm);
     document.querySelector("#closeEditModal").click();
   });
+}
+
+// function to delete the video_list
+function displayDelete() {
+  const deletenewsForm = document.getElementById("deletenewsForm");
+  const deletenewsSubmit = document.getElementById("deletenewsSubmit");
+
+  const allEditBtn = document.querySelectorAll(".editBtn");
+  const saveChangeSubmit=document.querySelector("#deletenewsSubmit");
+
+  Array.from(allEditBtn).forEach((elem) => {
+      elem.addEventListener("click", () => {
+          let takenId = parseInt(elem.getAttribute("id_name"));
+          let editData = {
+          editDataSend: true,
+          id_val: takenId,
+          };
+          saveChangeSubmit.setAttribute("idToDelete",takenId);
+          postData("./Actions/edit_news.php", editData, displayEdit, addnewsForm);
+      });
+      }
+  );
+  // adding event listener to the submit button of add user
+  deletenewsSubmit.addEventListener("click", (evnt) => {
+      // sending post request for gettiing the adduser form submit
+      let idToSend = parseInt(saveChangeSubmit.getAttribute("idToDelete"));
+      console.log("edit id = ",idToSend);
+  
+      let dataToFindEdit={
+        checkNews:"delete",
+        "deleteThisId":idToSend
+      }
+      postData("./Actions/add_news.php", dataToFindEdit, displayEditMessage, deletenewsForm);
+      document.querySelector("#closeDeleteModal").click();
+    }
+  );
 }

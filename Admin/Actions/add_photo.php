@@ -48,8 +48,31 @@ else if ($_POST["checkphoto"]=="edit") {
     //sql query to create a table named Service with three columns
     $sql = "UPDATE `photodb`  SET  event_name = '$event_name', event_date =  ' $event_date ' WHERE id='$idWhereEdit' ";
 
-    if (!mysqli_query($conn, $query)) {
+    if (!mysqli_query($conn, $sql)) {
         echo "Error:" . mysqli_error($conn);
     }
+}
+
+else if($_POST['checkphoto']=="delete") {
+    $reciev=$_POST["checkphoto"];
+    $idWhereDelete=intval($_POST['deleteThisId']);
+
+    $sql = "DELETE FROM  `photodb` WHERE `id`  =  $idWhereDelete " ;
+
+    if(mysqli_query($conn , $sql)){
+        $response = [
+            'status'=>'ok',
+            'success'=>true,
+            'message'=>'Record deleted succesfully!'
+        ];
+        print_r(json_encode($response));
+    }else{
+        $response = [
+            'status'=>'ok',
+            'success'=>false,
+            'message'=>'Record deleted failed!'
+        ];
+        print_r(json_encode($response));
+    } 
 }
 ?>

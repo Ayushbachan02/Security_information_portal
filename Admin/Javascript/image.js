@@ -5,6 +5,7 @@ function displayText(text) {
   const userTableContainer = document.getElementById("phototable");
   userTableContainer.innerHTML = text;
   bodyFunc();
+  displayDelete();
 }
 
 // function to display post response text
@@ -82,4 +83,40 @@ function bodyFunc() {
     postData("./Actions/add_photo.php", dataToFindEdit, displayEditMessage, editphotoForm);
     document.querySelector("#closeEditModal").click();
   });
+}
+
+// function to delete the video_list
+function displayDelete() {
+  const deletephotoForm = document.getElementById("deletephotoForm");
+  const deletephotoSubmit = document.getElementById("deletephotoSubmit");
+
+  const allEditBtn = document.querySelectorAll(".editBtn");
+  const saveChangeSubmit=document.querySelector("#deletephotoSubmit");
+
+  Array.from(allEditBtn).forEach((elem) => {
+      elem.addEventListener("click", () => {
+          let takenId = parseInt(elem.getAttribute("id_name"));
+          let editData = {
+          editDataSend: true,
+          id_val: takenId,
+          };
+          saveChangeSubmit.setAttribute("idToDelete",takenId);
+          postData("./Actions/edit_photo.php", editData, displayEdit, addphotoForm);
+      });
+      }
+  );
+  // adding event listener to the submit button of add user
+  deletephotoSubmit.addEventListener("click", (evnt) => {
+      // sending post request for gettiing the adduser form submit
+      let idToSend = parseInt(saveChangeSubmit.getAttribute("idToDelete"));
+      console.log("edit id = ",idToSend);
+  
+      let dataToFindEdit={
+        checkphoto:"delete",
+        "deleteThisId":idToSend
+      }
+      postData("./Actions/add_photo.php", dataToFindEdit, displayEditMessage, deletephotoForm);
+      document.querySelector("#closeDeleteModal").click();
+    }
+  );
 }

@@ -11,7 +11,6 @@ if ($_SESSION['admin_name'] == null) {
   header('location:../index.php');
 }
 
-require './Actions/add_photo.php';
 
 ?>
 
@@ -132,7 +131,7 @@ require './Actions/add_photo.php';
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeaddModal">Close</button>
           <button class="btn btn-primary" id="addphotoSubmit"">Upload</button>
         </div>
       </div>
@@ -164,8 +163,36 @@ require './Actions/add_photo.php';
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeEditModal">Close</button>
           <button class="btn btn-primary" id="editphotoSubmit"">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -------------------------- -->
+    <!-- Modal 3 -->
+    <div class=" modal fade" id="photodeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">delete photos</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                  <div class="alert alert-warning d-none">
+
+                  </div>
+                  <form action="" id="deletephotoForm">
+
+                    <div class="form-group mb-3">
+                     <p>Are you sure you want to delete this photo folder</p>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDeleteModal">Close</button>
+                  <button class="btn btn-danger" id="deletephotoSubmit"">delete</button>
         </div>
       </div>
     </div>

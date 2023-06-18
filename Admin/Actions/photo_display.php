@@ -18,7 +18,7 @@ include '../../config.php';
           <td>'.$row['event_name'].'</td>
           <td>'.$row['event_date'].'</td>
           <td>'.$row['no_of_files'].'</td>
-          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#photoeditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
+          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#photoeditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger editBtn" data-bs-toggle="modal" data-bs-target="#photodeleteModal">delete</button>'.'</td>
         </tr>';
     }
     $table .= '</table>';

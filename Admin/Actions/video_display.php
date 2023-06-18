@@ -16,7 +16,7 @@ include '../../config.php';
           <th scope="row">'.$row['id'].'</th>
           <td>'.$row['title'].'</td>
           <td>'.$row['name'].'</td>
-          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#videoeditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger deletebtn" >delete</button>'.'</td>
+          <td >'.'<button id_name="'.$row['id'].'" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#videoeditModal">edit</button>'." ".'<button id_name="'.$row['id'].'" class="btn btn-danger editBtn" data-bs-toggle="modal" data-bs-target="#videodeleteModal">delete</button>'.'</td>
         </tr>';
     }
     $table .= '</table>';

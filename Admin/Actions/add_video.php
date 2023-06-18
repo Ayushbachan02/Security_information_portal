@@ -2,7 +2,7 @@
 
 @include '../../config.php';
 
-if (isset($_POST['addvideo'])) {
+if ($_POST['checkvideo']=="add") {
     $maxsize = 5242880; // 5MB
     if ($_FILES['videoFile']['name']!='') {
         $name = $_FILES['videoFile']['name'];
@@ -70,9 +70,48 @@ if (isset($_POST['addvideo'])) {
         $response = [
             'status'=>"not ok",
             'success'=>true,
-            'message'=>'PLease select a video file. it is mandetory'
+            'message'=>'PLease select a video file. it is mandatory'
         ];
     }
     echo json_encode($response);
+}
+
+else if($_POST['checkvideo']=="add") {
+    $reciev=$_POST["checkvideo"];
+    $video_name = $_POST['title'];
+    $idWhereEdit=intval($_POST['editThisId']);
+
+
+
+    //sql query to create a table named Service with three columns
+    $sql = "UPDATE `videodb`  SET  name = '$video_name' WHERE id='$idWhereEdit' ";
+
+    if (!mysqli_query($conn, $sql)) {
+        echo "Error:" . mysqli_error($conn);
+    }
+}
+
+
+else if($_POST['checkvideo']=="delete") {
+    $reciev=$_POST["checkvideo"];
+    $idWhereDelete=intval($_POST['deleteThisId']);
+
+    $sql = "DELETE FROM  `videodb` WHERE `id`  =  $idWhereDelete " ;
+
+    if(mysqli_query($conn , $sql)){
+        $response = [
+            'status'=>'ok',
+            'success'=>true,
+            'message'=>'Record deleted succesfully!'
+        ];
+        print_r(json_encode($response));
+    }else{
+        $response = [
+            'status'=>'ok',
+            'success'=>false,
+            'message'=>'Record deleted failed!'
+        ];
+        print_r(json_encode($response));
+    } 
 }
 ?>

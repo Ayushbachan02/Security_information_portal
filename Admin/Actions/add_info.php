@@ -58,6 +58,30 @@ require "../../config.php";
                 ];
             }
         }
+
+        else if($_POST['checkinfo']=="delete") {
+            $reciev=$_POST["checkinfo"];
+            $idWhereDelete=intval($_POST['deleteThisId']);
+        
+            $sql = "DELETE FROM  `infodb` WHERE `id`  =  $idWhereDelete " ;
+        
+            if(mysqli_query($conn , $sql)){
+                $response = [
+                    'status'=>'ok',
+                    'success'=>true,
+                    'message'=>'Record deleted succesfully!'
+                ];
+                print_r(json_encode($response));
+            }else{
+                $response = [
+                    'status'=>'ok',
+                    'success'=>false,
+                    'message'=>'Record deleted failed!'
+                ];
+                print_r(json_encode($response));
+            } 
+        }
+
         else{
             $response = [
                 'status'=>'ok',
@@ -66,4 +90,7 @@ require "../../config.php";
             ];
             print_r(json_encode($response));
         }
+    
+
+     
 ?>
