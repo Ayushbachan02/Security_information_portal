@@ -111,7 +111,8 @@ if ($_SESSION['user_name'] == null) {
 
             $fetchVideos = mysqli_query($conn, "SELECT * FROM videodb ORDER BY id DESC");
             while ($row = mysqli_fetch_assoc($fetchVideos)) {
-                $location = $row['location'];
+                $path_dir='../Admin/videos/';
+                $location = $path_dir.$row['location'];
                 $name = $row['title'];
            
                 ?>

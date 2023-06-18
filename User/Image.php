@@ -131,11 +131,17 @@ if ($_SESSION['user_name'] == null) {
                                 <?php
                                 $path = "../Admin/Actions/images/" . $folder . "/";
                                 $file = scandir($path);
+                                foreach($file as $val){
+                                    if($val == '.' || $val == '..'){
+                                        continue;
+                                    }
                                 ?>
 
-                                <!-- <a href="http://localhost/php_prog/pro2.php?album=<?php echo $row['event_name']; ?>"> -->
-                                <img src="../Admin/Actions/images/<? echo $folder . "/" . $file[2]; ?>" alt="<?php echo $row['event_name']; ?>">
-                                </a>
+                                <img src="../Admin/Actions/images/<?php echo $folder . "/" . $val; ?>" alt="<?php echo $row['event_name']; ?>">
+                                <?php
+                                }
+                                ?>
+                                
                             </div>
                             <div class="title">
                                 <h3><?php echo $row['event_name']; ?></h3>

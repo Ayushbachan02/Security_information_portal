@@ -9,6 +9,7 @@ if ($_POST['checkvideo']=="add") {
         $title= $_POST["title"];
         $target_dir = "../videos/";
         $target_file = $target_dir . $_FILES["videoFile"]["name"];
+        $db_dir =  $_FILES["videoFile"]["name"];
         echo  $target_file;
         echo "\n";
 
@@ -32,7 +33,7 @@ if ($_POST['checkvideo']=="add") {
                 // Upload
                 if (move_uploaded_file($_FILES['videoFile']['tmp_name'], $target_file)) {
                     // Insert record
-                    $query = "INSERT INTO videodb (name,location,title) VALUES('" . $name . "','" . $target_file . "','" . $title . "')";
+                    $query = "INSERT INTO videodb (name,location,title) VALUES('" . $name . "','" . $db_dir . "','" . $title . "')";
 
                     if(mysqli_query($conn, $query)){
                         $response = [
